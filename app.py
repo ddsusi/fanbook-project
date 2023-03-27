@@ -7,11 +7,12 @@ from pymongo import MongoClient
 
 dotenv_path =join(dirname(__file__),'.env')
 load_dotenv(dotenv_path)
-MONGODB_URL=os.environ.get("mongodb+srv://test:sparta@cluster0.ej6iz6q.mongodb.net/?retryWrites=true&w=majority")
-DB_NAME =os.environ.get("dbsparta")
+MONGODB_URL=os.environ.get("MONGODB_URL")
+DB_NAME =os.environ.get("DB_NAME")
 
-client = MongoClient('mongodb+srv://test:sparta@cluster0.ej6iz6q.mongodb.net/?retryWrites=true&w=majority')
-db = client.dbsparta
+client = MongoClient(MONGODB_URL)
+db = client(DB_NAME)
+
 app = Flask(__name__)
 
 @app.route('/')
